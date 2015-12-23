@@ -31,6 +31,6 @@ public class letterCounter {
 			}
 			index = index + 1;
 		}
-		System.out.println("The character " + c + " appears " + index + "times.");
+		System.out.println("The character " + c + " appears " + count + "times.");
 	}
 }
