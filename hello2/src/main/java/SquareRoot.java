@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import static tools.getScanner.getDouble;
+
 public class SquareRoot {
     public static void main(String[] args){
     
@@ -12,21 +14,7 @@ public class SquareRoot {
         user_input.close(); // We are done with the scanner now.
         System.out.print("The square root of " + orig + " is: " + squareRoot(orig) + ".");
     }
-    public static double getDouble (Scanner scanner, String prompt) {
-        double input = 777.7; //value will be parsed again
-        boolean errorAlert = false;
-        while(!errorAlert) {
-            errorAlert = true;
-            try {
-                    System.out.print(prompt);
-                    input = Double.parseDouble(scanner.next());
-            } catch (NumberFormatException e) {
-                    System.out.println("Input must be a number.");
-                    errorAlert = false;
-            }
-        }
-        return input;
-    }
+
     public static double squareRoot (double orig) {
         double guess = orig/2;
         double calc = (guess + orig/guess)/2;

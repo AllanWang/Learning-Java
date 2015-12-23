@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import static tools.getScanner.getDouble;
+
 public class triangle {
         public static void main (String[] args) {
                
@@ -14,22 +16,6 @@ public class triangle {
                 user_input.close(); // We are done with the scanner now.
                
                 System.out.println(canTriangle(a, b, c));
-        }
-       
-        public static double getDouble (Scanner scanner, String prompt) {
-                double input = 777.7; //value will be parsed again
-                boolean errorAlert = false;
-                while(!errorAlert) {
-                        errorAlert = true;
-                        try {
-                                System.out.print(prompt);
-                                input = Double.parseDouble(scanner.next());
-                        } catch (NumberFormatException e) {
-                                System.out.println("Input must be a number.");
-                                errorAlert = false;
-                        }
-                }
-                return input;
         }
        
         public static String canTriangle (double a, double b, double c) {

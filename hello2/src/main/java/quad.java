@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
+import static tools.getScanner.getDouble;
+
 public class quad {
         public static void main (String[] args) {
                
@@ -30,22 +32,6 @@ public class quad {
                         System.out.println(" = (x " + fmt.format(-x1) + ")(x " + fmt.format(-x2) + ")");
                         System.out.println("X can be " + x1 + " or " + x2);
                 }
-        }
-       
-        public static double getDouble (Scanner scanner, String prompt) {
-                double input = 777.7; //value will be parsed again
-                boolean errorAlert = false;
-                while(!errorAlert) {
-                        errorAlert = true;
-                        try {
-                                System.out.print(prompt);
-                                input = Double.parseDouble(scanner.next());
-                        } catch (NumberFormatException e) {
-                                System.out.println("Input must be a number.");
-                                errorAlert = false;
-                        }
-                }
-                return input;
         }
        
         public static void original (double a, double b, double c) {

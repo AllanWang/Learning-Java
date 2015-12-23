@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import static tools.getScanner.getDouble;
+
 public class isDivisible {
         public static void main (String[] args) {
                
@@ -12,23 +14,9 @@ public class isDivisible {
                
                 System.out.println(isDivislble(n, m));
         }
-       
-        public static double getDouble (Scanner scanner, String prompt) {
-                double input = 777.7; //value will be parsed again
-                boolean errorAlert = false;
-                while(!errorAlert) {
-                        errorAlert = true;
-                        try {
-                                System.out.print(prompt);
-                                input = Double.parseDouble(scanner.next());
-                        } catch (NumberFormatException e) {
-                                System.out.println("Input must be a number.");
-                                errorAlert = false;
-                        }
-                }
-                return input;
-        }
-       
+
+
+
         public static String isDivislble (double n, double m) {
                 if (n % m == 0) {
                     String dYes = n + " is divisible by " + m;

@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import static tools.getScanner.getInt;
+
 public class gcd {
     public static void main (String[] args) {
         
@@ -16,41 +18,7 @@ public class gcd {
         gcd(a, b);
         System.out.println(".");
     }
-       
-    /*public static double getDouble (Scanner scanner, String prompt) {
-        double input = 777.7; //value will be parsed again
-        boolean errorAlert = false;
-        while(!errorAlert) {
-            errorAlert = true;
-            try {
-                    System.out.print(prompt);
-                    input = Double.parseDouble(scanner.next());
-            } catch (NumberFormatException e) {
-                    System.out.println("Input must be a number.");
-                    errorAlert = false;
-            }
-        }
-        return input;
-    }*/
-    public static int getInt (Scanner scanner, String prompt) {
-        int input = 777; //value will be parsed again
-        boolean errorAlert = false;
-        while(!errorAlert) {
-            errorAlert = true;
-            try {
-                    System.out.print(prompt);
-                    input = Integer.parseInt(scanner.next());
-            } catch (NumberFormatException e) {
-                    System.out.println("Input must be an integer.");
-                    errorAlert = false;
-            }
-            if (input < 0) {
-                System.out.println("Input must be positive");
-                errorAlert = false;
-            }
-        }
-        return input;
-    }
+
     public static void gcd (int a, int b) {
         if (a > b && b != 0) {
             a = a % b;

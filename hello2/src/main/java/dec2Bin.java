@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import static tools.getScanner.getInt;
+
 public class dec2Bin {
     public static void main (String[] args) {
         
@@ -16,26 +18,7 @@ public class dec2Bin {
         System.out.println(".");
         
     }
-       
-    public static int getInt (Scanner scanner, String prompt) {
-        int input = 777; //value will be parsed again
-        boolean errorAlert = false;
-        while(!errorAlert) {
-            errorAlert = true;
-            try {
-                    System.out.print(prompt);
-                    input = Integer.parseInt(scanner.next());
-            } catch (NumberFormatException e) {
-                    System.out.println("Input must be an integer.");
-                    errorAlert = false;
-            }
-            if (input < 0) {
-                System.out.println("Input must be positive");
-                errorAlert = false;
-            }
-        }
-        return input;
-    }
+
     public static void dec2Bin (int a) {
         String x = new String();
         while (a > 0) {

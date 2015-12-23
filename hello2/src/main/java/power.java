@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import static tools.getScanner.getDouble;
+import static tools.getScanner.getInt;
+
 public class power {
     public static void main (String[] args) {
         
@@ -14,37 +17,6 @@ public class power {
            
         Double m = x;
         power(x, n, m);
-    }
-       
-    public static double getDouble (Scanner scanner, String prompt) {
-        double input = 777.7; //value will be parsed again
-        boolean errorAlert = false;
-        while(!errorAlert) {
-            errorAlert = true;
-            try {
-                    System.out.print(prompt);
-                    input = Double.parseDouble(scanner.next());
-            } catch (NumberFormatException e) {
-                    System.out.println("Input must be a number.");
-                    errorAlert = false;
-            }
-        }
-        return input;
-    }
-    public static int getInt (Scanner scanner, String prompt) {
-        int input = 777; //value will be parsed again
-        boolean errorAlert = false;
-        while(!errorAlert) {
-            errorAlert = true;
-            try {
-                    System.out.print(prompt);
-                    input = Integer.parseInt(scanner.next());
-            } catch (NumberFormatException e) {
-                    System.out.println("Input must be an integer.");
-                    errorAlert = false;
-            }
-        }
-        return input;
     }
     public static void power (Double x, int n, Double m) {
         String pV = "The value of x^n is ";

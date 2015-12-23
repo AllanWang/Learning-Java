@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import static tools.getScanner.getInt;
+
 public class LeapYearCalc2 {
     public static void main(String[] args){
     
@@ -15,36 +17,6 @@ public class LeapYearCalc2 {
             System.out.println("This is not a leap year");
         }    
     }
-    
-    public static int getInt (Scanner scanner, String prompt) {
-        int input = 777; //value will be parsed again
-        boolean errorAlert = false;
-        while(!errorAlert) {
-            errorAlert = true;
-            try {
-                    System.out.print(prompt);
-                    input = Integer.parseInt(scanner.next());
-            } catch (NumberFormatException e) {
-                    System.out.println("Input must be an integer.");
-                    errorAlert = false;
-            }
-            if (input < 0) {
-                System.out.println("Input must be positive");
-                errorAlert = false;
-            }
-        }
-        return input;
-    }
-    
-    /*public static void printIsLeapYear(int year){
-    
-        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0){
-            System.out.println("The year " + year + " is a leap year.");
-        
-        }else{
-            System.out.println("The year " + year + " is not a leap year.");
-        }
-    }*/
     
     public static void subsequentLeapYear(int year){
         year = year + 4;
