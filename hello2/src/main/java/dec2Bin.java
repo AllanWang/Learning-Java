@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class dec2Bin {
+public class dec2Bin {
     public static void main (String[] args) {
         
         System.out.println("This will convert whole numbers from decimal to binary");

@@ -1,6 +1,6 @@
 import java.util.Scanner;
- 
-class recurse {
+
+public class recurse {
         public static void main (String[] args) {
                
                 System.out.println("Writes word vertically");

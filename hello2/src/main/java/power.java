@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class power {
+public class power {
     public static void main (String[] args) {
         
         System.out.println("This will calculate the value for x^n");

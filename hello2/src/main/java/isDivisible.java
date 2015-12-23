@@ -1,6 +1,6 @@
 import java.util.Scanner;
- 
-class isDivisible {
+
+public class isDivisible {
         public static void main (String[] args) {
                
                 Scanner user_input = new Scanner(System.in);

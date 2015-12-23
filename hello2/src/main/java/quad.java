@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.text.DecimalFormat;
- 
-class quad {
+
+public class quad {
         public static void main (String[] args) {
                
                 Scanner user_input = new Scanner(System.in);

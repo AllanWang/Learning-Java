@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class letterCounter {
+public class letterCounter {
 	public static void main (String[] args) {
 
 		System.out.println("Finds the number of times a given letter appears in text.");

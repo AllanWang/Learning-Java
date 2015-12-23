@@ -1,4 +1,4 @@
- class beer {
+ public class beer {
 	public static void main (String[] args) {
 		beer(99);
 	}

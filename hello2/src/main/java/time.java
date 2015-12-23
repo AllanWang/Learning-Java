@@ -1,4 +1,4 @@
-class time {
+public class time {
     public static void main (String[] args) {
         String am, eur, day, month;
 		am = "American format:";

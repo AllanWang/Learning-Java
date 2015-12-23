@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class gcd {
+public class gcd {
     public static void main (String[] args) {
         
         System.out.println("This will calculate the greatest common denominator for two integers.");

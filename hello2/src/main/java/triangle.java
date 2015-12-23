@@ -1,6 +1,6 @@
 import java.util.Scanner;
- 
-class triangle {
+
+public class triangle {
         public static void main (String[] args) {
                
                 System.out.println("Tests to see if 3 given sides can form a triangle");
