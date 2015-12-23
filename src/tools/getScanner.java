@@ -40,10 +40,10 @@ public class getScanner {
 
     public static char getChar(Scanner scanner, String prompt) {
         char c = '$'; //value will be parsed again
-        System.out.print(prompt);
         boolean errorAlert = false;
         while(!errorAlert) {
             errorAlert = true;
+            System.out.print(prompt);
             String s = scanner.next();
             if (s.length() > 1) {
                 System.out.println("Please input one character only!");

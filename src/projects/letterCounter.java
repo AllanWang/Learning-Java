@@ -33,6 +33,11 @@ public class letterCounter {
 			}
 			index = index + 1;
 		}
-		System.out.println("The character " + c + " appears " + count + "times.");
+		
+		if (count == 1) {
+			System.out.println("The character '" + c + "' appears " + count + " time.");
+		} else {
+			System.out.println("The character '" + c + "' appears " + count + " times.");
+		}
 	}
 }
