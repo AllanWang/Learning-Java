@@ -15,6 +15,8 @@ public class userInput {
 		System.out.print("Last name: ");
 		last_name = user_input.next();
 		
+		user_input.close(); // We are done with the scanner now.
+		
 		System.out.println("Hello " + first_name + " " + last_name);
 	}
 }

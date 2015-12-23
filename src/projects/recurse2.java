@@ -13,6 +13,8 @@ public class recurse2 {
         		System.out.print("Type word here: ");
         		word = user_input.next();
         		
+        		user_input.close(); // We are done with the scanner now.
+        		
         		vertical(length(word), length(word), word);
         }
         //same function as recurse.java but with personal modifications
