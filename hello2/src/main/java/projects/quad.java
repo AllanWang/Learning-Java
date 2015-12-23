@@ -1,5 +1,7 @@
-import java.util.Scanner;
+package projects;
+
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 import static tools.getScanner.getDouble;
 

@@ -1,3 +1,5 @@
+package projects;
+
 import java.util.Scanner;
 
 import static tools.getScanner.getChar;

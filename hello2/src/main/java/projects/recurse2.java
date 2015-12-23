@@ -1,3 +1,5 @@
+package projects;
+
 import java.util.Scanner;
 
 public class recurse2 {
