@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import static tools.getScanner.getChar;
 
+//	2015/12/23
+
 public class letterCounter {
 	public static void main (String[] args) {
 
@@ -29,9 +31,9 @@ public class letterCounter {
 
 		while (index < length) {
 			if(s.charAt(index) == c) {
-				count = count + 1;
+				count++;
 			}
-			index = index + 1;
+			index++;
 		}
 		
 		if (count == 1) {
