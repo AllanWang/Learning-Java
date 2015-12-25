@@ -67,7 +67,6 @@ public class Time {
 	}
 	
 	public static Time addTime(Time t1, Time t2) {
-		Time t = new Time();
 		int sum = t2s(t1) + t2s(t2);
 		return s2t(sum);
 	}
