@@ -74,11 +74,11 @@ public class Time {
 	public static void printTime(Time t) {
 		String min = String.valueOf(t.minute);
 		if (t.minute < 10) {
-			min = String.format("%02d\n", t.minute);
+			min = String.format("%02d", t.minute);
 		}
 		String sec = String.valueOf(t.second);
 		if (t.second < 10) {
-			sec = String.format("%02d\n", t.second);
+			sec = String.format("%02d", t.second);
 		}
 		System.out.println(t.hour + ":" + min + ":" + sec);
 	}
