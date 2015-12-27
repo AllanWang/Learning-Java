@@ -101,9 +101,6 @@ public class PrimeNumber {
 		FileInputStream fis = new FileInputStream("prime/prime.txt");
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		ArrayList<Long> list2 = (ArrayList<Long>)ois.readObject();
-		
-		System.out.println("");
-		System.out.println(list2);
 	}
 	
 	public static boolean isPrime (Long number, Long min, ArrayList<Long> list) {
