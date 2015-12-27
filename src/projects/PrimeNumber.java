@@ -71,7 +71,7 @@ public class PrimeNumber {
 				printPrimeInRange(list.size(), number, list);
 			} else if (min > number) { //if true, simply show section of arraylist below (number)
 				Long max = (long) 3;
-				int index = 0;
+				int index = 1;
 				while (max < number) {
 					index++;
 					max = list.get(index);
@@ -104,6 +104,9 @@ public class PrimeNumber {
 	}
 	
 	public static boolean isPrime (Long number, Long min, ArrayList<Long> list) {
+		if (number == 2) {
+			return true;
+		}
 		if (number % 2 == 0) {
 			return false;
 		} else if (inList(number, min, list)) {
@@ -138,14 +141,14 @@ public class PrimeNumber {
 	
 	public static boolean basicIsPrime (Long min, Long number) {
 		if (number < 16) { //added just to avoid issue with the square root below
-			if (number == 3 || number == 5 || number == 7 || number == 11 || number == 13) {
+			if (number == 2 || number == 3 || number == 5 || number == 7 || number == 11 || number == 13) {
 				return true;
 			} else {
 				return false;
 			}
 		} else {
 			Long max = (long) Math.sqrt((double) number);
-			while (min <= max) {
+			while (min <= max) { //no need to check mod after the square root of the number
 				if (number % min == 0) {
 					return false;
 				} else {
