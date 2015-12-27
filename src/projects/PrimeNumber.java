@@ -16,7 +16,7 @@ public class PrimeNumber {
 	public static void main (String[] args) throws IOException, ClassNotFoundException {
 		
 		ArrayList<Long> list = new ArrayList<Long>();
-		Long min = (long) 3;
+		Long min = (long) 1;
 		
 		//creates text file where arraylist will be stored
 		if (!new File("prime/prime.txt").isFile()) {
@@ -62,7 +62,12 @@ public class PrimeNumber {
         user_input.close(); // We are done with the scanner now.
 				
 		if (range) {
-			if (min == number) {
+			if (number < 3) { //1 and 2 are not prime numbers
+				System.out.println("There are no prime numbers less than or equal to " + number + ".");
+			} else if (min == 1) { //there is no existing arraylist; get entire prime list number
+				getPrimeInRange(min, number, list);
+				printPrimeInRange(list.size(), number, list);
+			} else if (min == number) {
 				printPrimeInRange(list.size(), number, list);
 			} else if (min > number) { //if true, simply show section of arraylist below (number)
 				Long max = (long) 3;
@@ -135,12 +140,20 @@ public class PrimeNumber {
 	}
 	
 	public static boolean basicIsPrime (Long min, Long number) {
-		Long max = (long) Math.sqrt((double) number);
-		while (min < max) {
-			if (max % min == 0) {
-				return false;
+		if (number < 16) { //added just to avoid issue with the square root below
+			if (number == 3 || number == 5 || number == 7 || number == 11 || number == 13) {
+				return true;
 			} else {
-				min += 2;
+				return false;
+			}
+		} else {
+			Long max = (long) Math.sqrt((double) number);
+			while (min <= max) {
+				if (number % min == 0) {
+					return false;
+				} else {
+					min += 2;
+				}
 			}
 		}
 		return true;
