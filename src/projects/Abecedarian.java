@@ -1,7 +1,5 @@
 package projects;
 
-import static tools.getScanner.getInt;
-
 import java.util.Scanner;
 
 //	2015/12/23

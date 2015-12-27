@@ -1,7 +1,8 @@
 package projects;
 
 import java.util.Scanner;
-import static tools.getScanner.getInt;
+
+import tools.GetScanner;
 
 //	2015/12/23
 
@@ -28,7 +29,7 @@ public class CoderDecoder {
 			}
 		}
 		
-		shift = getInt(user_input, "Select value for character shift: ");
+		shift = GetScanner.getInt(user_input, "Select value for character shift: ");
 		user_input.close(); // We are done with the scanner now.
 			
         coderDecoder(s, shift);

@@ -2,18 +2,17 @@ package projects;
 
 import java.util.Scanner;
 
-import static tools.getScanner.getDouble;
-import static tools.getScanner.getInt;
+import tools.GetScanner;
 
-public class power {
+public class Power {
     public static void main (String[] args) {
         
         System.out.println("This will calculate the value for x^n");
         
         Scanner user_input = new Scanner(System.in);
                
-        Double x = getDouble(user_input, "x : ");
-        int n = getInt(user_input, "n : ");
+        Double x = GetScanner.getDouble(user_input, "x : ");
+        int n = GetScanner.getInt(user_input, "n : ");
                            
         user_input.close(); // We are done with the scanner now.
            

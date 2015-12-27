@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * Created by 7681 on 2015-12-23.
  */
-public class getScanner {
+public class GetScanner {
     public static double getDouble (Scanner scanner, String prompt) {
         double input = 777.7; //value will be parsed again
         boolean errorAlert = false;

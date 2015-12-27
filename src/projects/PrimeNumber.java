@@ -1,7 +1,5 @@
 package projects;
 
-import static tools.getScanner.getLong;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -10,6 +8,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import tools.GetScanner;
+
+// 2015/12/24
 
 public class PrimeNumber {
 	@SuppressWarnings({ "unchecked", "resource" })
@@ -38,7 +40,7 @@ public class PrimeNumber {
 		//get desired number to test
 		Scanner user_input = new Scanner(System.in);
         
-		Long number = getLong(user_input, "Enter number here: ");
+		Long number = GetScanner.getLong(user_input, "Enter number here: ");
 		
 		boolean errorAlert = true;
 		boolean range = false;

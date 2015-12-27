@@ -2,7 +2,7 @@ package projects;
 
 import java.util.Scanner;
 
-import static tools.getScanner.getDouble;
+import tools.GetScanner;
 
 public class SquareRoot {
     public static void main(String[] args){
@@ -11,7 +11,7 @@ public class SquareRoot {
         
         Scanner user_input = new Scanner(System.in);
                
-        double orig = getDouble(user_input, "Input: ");
+        double orig = GetScanner.getDouble(user_input, "Input: ");
 		
         user_input.close(); // We are done with the scanner now.
         System.out.print("The square root of " + orig + " is: " + squareRoot(orig) + ".");

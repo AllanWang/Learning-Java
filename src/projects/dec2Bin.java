@@ -2,16 +2,16 @@ package projects;
 
 import java.util.Scanner;
 
-import static tools.getScanner.getInt;
+import tools.GetScanner;
 
-public class dec2Bin {
+public class Dec2Bin {
     public static void main (String[] args) {
         
         System.out.println("This will convert whole numbers from decimal to binary");
         
         Scanner user_input = new Scanner(System.in);
                
-        int a = getInt(user_input, "Input number: ");
+        int a = GetScanner.getInt(user_input, "Input number: ");
                            
         user_input.close(); // We are done with the scanner now.
         

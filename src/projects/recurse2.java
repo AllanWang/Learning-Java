@@ -2,7 +2,7 @@ package projects;
 
 import java.util.Scanner;
 
-public class recurse2 {
+public class Recurse2 {
         public static void main (String[] args) {
                
                 System.out.println("Writes word vertically");

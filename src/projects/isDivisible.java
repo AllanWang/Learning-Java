@@ -2,15 +2,15 @@ package projects;
 
 import java.util.Scanner;
 
-import static tools.getScanner.getDouble;
+import tools.GetScanner;
 
-public class isDivisible {
+public class IsDivisible {
         public static void main (String[] args) {
                
                 Scanner user_input = new Scanner(System.in);
                
-                Double n = getDouble(user_input, "Dividend: ");
-                Double m = getDouble(user_input, "Divisor: ");
+                Double n = GetScanner.getDouble(user_input, "Dividend: ");
+                Double m = GetScanner.getDouble(user_input, "Divisor: ");
                                
                 user_input.close(); // We are done with the scanner now.
                

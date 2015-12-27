@@ -1,6 +1,6 @@
 package projects;
 
-public class beer {
+public class Beer {
 	public static void main (String[] args) {
 		beer(99);
 	}

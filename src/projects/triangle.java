@@ -2,18 +2,18 @@ package projects;
 
 import java.util.Scanner;
 
-import static tools.getScanner.getDouble;
+import tools.GetScanner;
 
-public class triangle {
+public class Triangle {
         public static void main (String[] args) {
                
                 System.out.println("Tests to see if 3 given sides can form a triangle");
                 
                 Scanner user_input = new Scanner(System.in);
                
-                Double a = getDouble(user_input, "Side 1: ");
-                Double b = getDouble(user_input, "Side 2: ");
-                Double c = getDouble(user_input, "Side 3: ");
+                Double a = GetScanner.getDouble(user_input, "Side 1: ");
+                Double b = GetScanner.getDouble(user_input, "Side 2: ");
+                Double c = GetScanner.getDouble(user_input, "Side 3: ");
                                
                 user_input.close(); // We are done with the scanner now.
                

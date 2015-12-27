@@ -2,14 +2,14 @@ package projects;
 
 import java.util.Scanner;
 
-import static tools.getScanner.getInt;
+import tools.GetScanner;
 
 public class LeapYearCalc2 {
     public static void main(String[] args){
     
         Scanner user_input = new Scanner(System.in);
                
-        int year = getInt(user_input, "Year: ");
+        int year = GetScanner.getInt(user_input, "Year: ");
                            
         user_input.close(); // We are done with the scanner now.
 

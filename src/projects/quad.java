@@ -3,16 +3,16 @@ package projects;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-import static tools.getScanner.getDouble;
+import tools.GetScanner;
 
-public class quad {
+public class Quad {
         public static void main (String[] args) {
                
                 Scanner user_input = new Scanner(System.in);
                
-                Double a = getDouble(user_input, "Coefficient of x^2: ");
-                Double b = getDouble(user_input, "Coefficient of x: ");
-                Double c = getDouble(user_input, "Constant: ");
+                Double a = GetScanner.getDouble(user_input, "Coefficient of x^2: ");
+                Double b = GetScanner.getDouble(user_input, "Coefficient of x: ");
+                Double c = GetScanner.getDouble(user_input, "Constant: ");
                                
                 user_input.close(); // We are done with the scanner now.
                

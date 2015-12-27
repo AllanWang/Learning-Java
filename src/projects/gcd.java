@@ -2,17 +2,17 @@ package projects;
 
 import java.util.Scanner;
 
-import static tools.getScanner.getInt;
+import tools.GetScanner;
 
-public class gcd {
+public class Gcd {
     public static void main (String[] args) {
         
         System.out.println("This will calculate the greatest common denominator for two integers.");
         
         Scanner user_input = new Scanner(System.in);
                
-        int a = getInt(user_input, "First number: ");
-        int b = getInt(user_input, "Second number: ");
+        int a = GetScanner.getInt(user_input, "First number: ");
+        int b = GetScanner.getInt(user_input, "Second number: ");
                            
         user_input.close(); // We are done with the scanner now.
         
