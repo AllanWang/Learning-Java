@@ -1,5 +1,6 @@
 package tools;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
@@ -53,6 +54,38 @@ public class getScanner {
             }
         }
         return c;
+    }
+    
+    public static BigInteger getBigInteger (Scanner scanner, String prompt) {
+    	BigInteger input = BigInteger.valueOf(777); //value will be parsed again
+        boolean errorAlert = false;
+        while(!errorAlert) {
+            errorAlert = true;
+            try {
+                System.out.print(prompt);
+                input = new BigInteger(scanner.next());
+            } catch (NumberFormatException e) {
+                System.out.println("Input must be a number.");
+                errorAlert = false;
+            }
+        }
+        return input;
+    }
+    
+    public static Long getLong (Scanner scanner, String prompt) {
+    	Long input = (long) 777; //value will be parsed again
+        boolean errorAlert = false;
+        while(!errorAlert) {
+            errorAlert = true;
+            try {
+                System.out.print(prompt);
+                input = Long.parseLong(scanner.next());
+            } catch (NumberFormatException e) {
+                System.out.println("Input must be an integer.");
+                errorAlert = false;
+            }
+        }
+        return input;
     }
 
 }

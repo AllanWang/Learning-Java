@@ -1,0 +1,160 @@
+package projects;
+
+import static tools.getScanner.getLong;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class PrimeNumber {
+	@SuppressWarnings({ "unchecked", "resource" })
+	public static void main (String[] args) throws IOException, ClassNotFoundException {
+		
+		ArrayList<Long> list = new ArrayList<Long>();
+		Long min = (long) 3;
+		
+		//creates text file where arraylist will be stored
+		if (!new File("prime/prime.txt").isFile()) {
+			System.out.println("File not found, creating new one");
+			File dir = new File("prime");
+			dir.mkdirs();
+			File prime = new File(dir, "prime.txt");
+			prime.createNewFile();
+		} else { //if file found, load existing arraylist
+			System.out.println("File found!");
+			FileInputStream fis = new FileInputStream("prime/prime.txt");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			list = (ArrayList<Long>)ois.readObject();
+			if (list.size() > 0) {
+				min = list.get(list.size()-1);
+			}
+		}
+		
+		//get desired number to test
+		Scanner user_input = new Scanner(System.in);
+        
+		Long number = getLong(user_input, "Enter number here: ");
+		
+		boolean errorAlert = true;
+		boolean range = false;
+		String type = new String();
+		while (errorAlert) {
+			errorAlert = false;
+			System.out.println("Do you want to test if this number is prime,");
+			System.out.print("or find all the prime numbers before this one? ");
+			type = user_input.next();
+			if (type.equals("prime") || type.equals("p")) {
+				range = false;
+			} else if (type.equals("range") || type.equals("r")) {
+				range = true;
+			} else {
+				System.out.print("Sorry, I didn\'t get that. Please enter 'prime' or 'range'");
+				errorAlert = true;
+			}
+		}
+	
+                       
+        user_input.close(); // We are done with the scanner now.
+				
+		if (range) {
+			if (min == number) {
+				printPrimeInRange(list.size(), number, list);
+			} else if (min > number) { //if true, simply show section of arraylist below (number)
+				Long max = (long) 3;
+				int index = 0;
+				while (max < number) {
+					index++;
+					max = list.get(index);
+				}
+				printPrimeInRange(index, number, list);
+			} else {
+				getPrimeInRange(min, number, list);
+				printPrimeInRange(list.size(), number, list);
+			}
+		} else {
+			if (isPrime(number, min, list)) {
+				System.out.println(number + " is a prime number!");
+			} else {
+				System.out.println(number + " is not a prime number.");
+			}
+		}
+        
+		try {
+		    FileOutputStream fos = new FileOutputStream("prime/prime.txt");
+		    ObjectOutputStream oos = new ObjectOutputStream(fos);   
+		    oos.writeObject(list); // write MenuArray to ObjectOutputStream
+		    oos.close(); 
+		} catch(Exception ex) {
+		    ex.printStackTrace();
+		}
+		
+		FileInputStream fis = new FileInputStream("prime/prime.txt");
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		ArrayList<Long> list2 = (ArrayList<Long>)ois.readObject();
+		
+		System.out.println("");
+		System.out.println(list2);
+	}
+	
+	public static boolean isPrime (Long number, Long min, ArrayList<Long> list) {
+		if (number % 2 == 0) {
+			return false;
+		} else if (inList(number, min, list)) {
+			return true;
+		} else if (min > number) {
+			return false;
+		} else {
+			Long max = (long) Math.sqrt((double) number);
+			basicIsPrime(min, max);
+		}
+		return true;
+	}
+	
+	public static boolean inList (Long number, Long min, ArrayList<Long> list) {
+		if (min > number) { //first checks if number is smaller than biggest arraylist number
+			if (list.contains(number)) { //checks if number is in arraylist
+				return true;
+			} 
+		}
+		return false;
+	}
+	
+	public static void getPrimeInRange (Long min, Long number, ArrayList<Long> list) {
+		min += 2;
+		while (min <= number) {
+			 if (basicIsPrime((long) 3, min)) {
+				 list.add(min);
+			 }
+			 min += 2;
+		}
+	}
+	
+	public static boolean basicIsPrime (Long min, Long number) {
+		Long max = (long) Math.sqrt((double) number);
+		while (min < max) {
+			if (max % min == 0) {
+				return false;
+			} else {
+				min += 2;
+			}
+		}
+		return true;
+	}
+	
+	public static void printPrimeInRange (int index, Long number, ArrayList<Long> list) {
+		System.out.print("Prime numbers until " + number + ": ");
+		//note that index should be the number of items to be displayed, or 1 bigger than the final array size
+		int trueIndex = index;
+		while (index > 1) {
+			System.out.print(list.get(trueIndex - index) + ", ");
+			index--;
+		}
+		System.out.print(list.get(trueIndex - 1)); //prints last value without extra comma afterwards
+	}
+
+}
