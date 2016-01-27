@@ -1,5 +1,5 @@
 For question 1, use "int number = Integer.parseInt(args[0]);" as mentioned to get the entire string of digits.
-Use modulus and division by 10 to get the individual digits.
+Use modulo and division by 10 to get the individual digits.
 
 When creating if else statements, watch our for the following:
 
