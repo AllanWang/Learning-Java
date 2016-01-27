@@ -1,0 +1,21 @@
+For question 1, use "int number = Integer.parseInt(args[0]);" as mentioned to get the entire string of digits.
+Use modulus and division by 10 to get the individual digits.
+
+When creating if else statements, watch our for the following:
+
+	If your method needs to return a double, make sure that it will always return a double in every scenario.
+	If you create your own variables, note that they are only existent in their blocks.
+	
+	if (x > y) {
+		double max = x;
+	} else if (x < y) {
+		double max = y;
+	}
+	return max;
+	
+	will not work as the double max no longer exists after the if else.
+	Either return the values without creating new variables within the blocks itself,
+	or initiate the double (ie double max = new Double();) before the if else statements.
+	
+	If your if else crashed and you see no syntax error, there is a chance that you didn't take into account every scenario,
+	(like the example above), and there is some value in which nothing is returned.
