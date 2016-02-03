@@ -2,7 +2,7 @@ package comp202;
 
 public class Lecture8 {
 //2016/01/22
-	public static void main (String args[]) {
+	public static void main (String[] args) {
 		printMonotonic(isMonotonic(1, 2, 3));
 		printMonotonic(isMonotonic(1, 5, 3));
 		printMonotonic(isMonotonic(33, 5, 3));

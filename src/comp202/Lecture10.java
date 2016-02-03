@@ -3,7 +3,7 @@ package comp202;
 public class Lecture10 {
 	//2016/01/27
 	
-	public static void main (String args[]) {
+	public static void main (String[] args) {
 		if (args.length == 3) {
 			printValueMethod(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]));
 		}
