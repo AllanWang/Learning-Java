@@ -8,20 +8,23 @@ public class DividingArrays {
 	
 	static boolean verboseLog = true;
 	private static Random rnd;
+	static int base = 10;
 
 	public static void main (String[] args) {
 		int recursion = 0;
 		
 		//how many times do you want to repeat this?
-		recursion = 9;
+//		recursion = 9;
 		
-		int dividend = 119628;
-		int divisor = 448;
-		/* Bad divisions
-		 119628 / 448
-		 447543 / 278
-		 649290 / 217
+		int dividend = 729110;
+		int divisor = 680;
+		/* Previous fixes
+		 * 156753 294
+		 * 653097 168
 		*/
+		/* Incorrect
+		 * 326059 329
+		 */
 		
 		if (recursion > 0) {
 			rnd = new Random();
@@ -31,13 +34,13 @@ public class DividingArrays {
 			for(int i = 0; i < recursion; i++) {
 				int[] dividendArray = int2array(randomInt(6));
 				int[] divisorArray = int2array(randomInt(3));
-		
+				print("Original dividend", dividendArray);
+				print("Original divisor", divisorArray);
 				divideArrays(dividendArray, divisorArray);
 			}
 		} else {
 			int[] dividendArray = int2array(dividend);
 			int[] divisorArray = int2array(divisor);
-	
 			divideArrays(dividendArray, divisorArray);
 		}
 	
@@ -48,9 +51,11 @@ public class DividingArrays {
 		int[] dividendOrig = duplicateArray(dividend); //saves original dividend as new object
 		int[] divisorOrig = duplicateArray(divisor);
 		int[] divisor2 = duplicateArray(divisor);
-		boolean leadingZeroFlag = false;
+		int leadingZeroCount = 0;
 		boolean firstLeadingZero = true;
 		boolean firstZero = false;
+		boolean dividendZero = false;
+		boolean alreadyRemoved = false;
 		
 		log("Starting dividend", dividend);
 		log("Starting divisor", divisor2);
@@ -60,11 +65,13 @@ public class DividingArrays {
 			
 			if (isDivisible(dividend, divisor2)) { //checks if numbers are aligned and divisible
 				int i = 1;
-				
+				dividendZero = false;
+				alreadyRemoved = false;
 				if (divisor2[0] < 5) { //division will not be greater than 2 if first digit of divisor >= 5
 					for(; isDivisible(dividend, divisor2); i++) {
 						for(int j = 0; j < divisor.length; j++) {
 							divisor2[j] = divisor2[j] + divisor[j];
+//							print("eee", divisor2);
 							normalize(divisor2);
 						}
 					}
@@ -76,6 +83,7 @@ public class DividingArrays {
 					}
 					divisor2 = normalize(divisor2);	
 				}
+
 				
 				log("quotient before i " + quotient);
 				log("i value " + i);
@@ -91,45 +99,52 @@ public class DividingArrays {
 						break fullLoop;
 					}
 				}
+				
+				
 //				firstZero = true;
 //				log("New dividend", dividend);
-				dividend = removeLeadingZero(normalize(dividend));
-				log("Final dividend", dividend);
-				
-				while (dividend[0] == 0) {
-					log("leading zero found");
-					dividend = removeLeadingZero(dividend);
-//					if (firstZero) { //if there's one zero in the front, that's natural
-//						log("first zero now false");
-//						firstZero = false;
-						//TODO check
-//						if (dividend[1] != 0) {
-//							quotient.add(0);
-//							log("adding zero to quotient");
-//						}
-//					if (leadingZeroFlag) { //added zero yourself, should not count
-//						log("leading zero flag now false");
-//						leadingZeroFlag = false;
-//					} else {
-						quotient.add(0);
-						log("adding zero to quotient");
-//					}
+				if (dividend.length > divisor.length) {
+					//restore divisor 
+					divisor = duplicateArray(divisorOrig);
+					divisor2 = duplicateArray(divisorOrig);
 					
+					dividend = normalize(dividend);
+					if (dividend[0] == 0) {
+						dividend = removeLeadingZero(dividend);
+						log("already removed true");
+						alreadyRemoved = true;
+					}
+
+					log("Final dividend", dividend);
+					
+					while (dividend[0] == 0) {
+						log("leading zero found", dividend);
+						dividend = removeLeadingZero(dividend);
+						if (!firstZero) {
+							log("prev quotient ee " + quotient);
+							quotient.add(0);
+							log("new quotient ee " + quotient);
+						}
+						dividendZero = true;
+					}
 				}
 				
-				//restore original values
-				divisor = duplicateArray(divisorOrig);
-				divisor2 = duplicateArray(divisorOrig);
+				//restore original booleans
 				firstLeadingZero = true;
+				firstZero = false;
 			} else {
 				divisor2 = addLeadingZero(divisor2);
 				divisor = addLeadingZero(divisor);
-				leadingZeroFlag = true;
-				log("added leadingZeroFlag");
+//				leadingZeroCount++;
+//				log("added leadingZeroFlag");
 				log("new divisor", divisor2);
-				if(!firstLeadingZero) {
+//				if((quotient.size() != 0 && !firstLeadingZero) || alreadyRemoved) {
+				if((quotient.size() != 0 && !firstLeadingZero)) {
 					quotient.add(0);
+				} else if (quotient.size() == 0) {
+					firstZero = true;
 				}
+				alreadyRemoved = false;
 				firstLeadingZero = false;
 			}
 		}
@@ -137,14 +152,22 @@ public class DividingArrays {
 //		} //test
 		print("Dividend", dividendOrig);
 		print("Divisor", divisorOrig);
-		quotient = removeTrailingZero(quotient);
-		System.out.println("Quotient: " + removeTrailingZero(quotient));
+		if (!dividendZero) {
+			quotient = removeTrailingZero(quotient);
+			System.out.println("removing trailing quotient zero");
+		}
+		System.out.println("Quotient: " + quotient);
 		System.out.println("True Quotient: " + array2int(dividendOrig)/array2int(divisor));
 		if(array2int(quotient) == array2int(dividendOrig)/array2int(divisor)) {
 			if (array2int(dividend) == 0) {
 				System.out.println("Remainder: 0");
 			} else {
-				print("Remainder", removeLeadingZero(dividend));
+				dividend = normalize(dividend);
+				while (dividend[0] == 0) {
+					verboseLog = false;
+					dividend = removeLeadingZero(dividend);
+				}
+				print("Remainder", dividend);
 			}
 			System.out.println("True Remainder: " + array2int(dividendOrig)%array2int(divisor));
 			if(array2int(dividend) != array2int(dividendOrig)%array2int(divisor)) {
@@ -173,7 +196,6 @@ public class DividingArrays {
 			intArray2[i+1] = intArray[i];
 		}
 		intArray2[0] = 0;
-//		log("New array with new zero " + array2string(intArray2));
 		return intArray2;
 	}
 	
@@ -185,6 +207,8 @@ public class DividingArrays {
 			}
 			log("after removed 0", intArray2);
 			return intArray2;
+		} else {
+			log("no leading zero");
 		}
 		return intArray;
 	}
@@ -192,21 +216,24 @@ public class DividingArrays {
 	public static List<Integer> removeTrailingZero(List<Integer> intArrayList) {
 		if (intArrayList.get(intArrayList.size()-1) == 0) {
 			intArrayList.remove(intArrayList.size()-1);
+		} else {
+			log("no leading zero");
 		}
 		return intArrayList;
 	}
 	
 	public static int[] normalize(int[] intArray) {
 		boolean doubleDigit = true;
+//		print("asdf", intArray);
 		while(doubleDigit) { //loops around until it guarantees that every digit is 9 or under
 			boolean change = false;
-			for(int i = 0; i < intArray.length; i++) {
-				if (intArray[i] > 9) {
-					intArray[i-1] = intArray[i-1] + intArray[i]/10;
-					intArray[i] %= 10;
+			for(int i = 1; i < intArray.length; i++) { //i starts at 1, not 0, because first digit cannot be normalized
+				if (intArray[i] > base - 1) {
+					intArray[i-1] = intArray[i-1] + intArray[i]/base;
+					intArray[i] %= base;
 					change = true;
 				} else if (intArray[i] < 0) {
-					intArray[i] += 10;
+					intArray[i] += base;
 					intArray[i-1]--;
 					change = true;
 				}
@@ -227,7 +254,7 @@ public class DividingArrays {
 	public static int array2int (int[] intArray) {
 		int result = 0;
 		for (int i=0; i<intArray.length; i++) {
-		    result += (intArray[intArray.length-i-1]*Math.pow(10, i));
+		    result += (intArray[intArray.length-i-1]*Math.pow(base, i));
 		}
 		return result;
 	}
@@ -235,7 +262,7 @@ public class DividingArrays {
 	public static int array2int (List<Integer> list) {
 		int total = 0;
 		for (Integer i : list) { // assuming list is of type List<Integer>
-		    total = 10*total + i;
+		    total = base*total + i;
 		}
 		return total;
 	}
@@ -278,7 +305,7 @@ public class DividingArrays {
 	public static int randomInt (int digCount) {
 		StringBuilder sb = new StringBuilder(digCount);
 	    for(int i=0; i < digCount; i++)
-	        sb.append((char)('0' + rnd.nextInt(10)));
+	        sb.append((char)('0' + rnd.nextInt(base)));
 	    return Integer.parseInt(sb.toString());
 	}
 }
