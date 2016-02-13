@@ -1,5 +1,5 @@
 package comp202;
-//Allan Wang 260667681
+//Allan W
 
 
 import java.util.ArrayList;
