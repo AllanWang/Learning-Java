@@ -21,7 +21,7 @@ public class CoderDecoder {
 			proceed = true;
 			System.out.print("Input text: ");
 		
-			s = user_input.nextLine().replaceAll("\\s+","");; //used nextLine instead of next as inputting text may imply an entire sentence, spaces are automatically removed
+			s = user_input.nextLine().replaceAll("\\s+",""); //used nextLine instead of next as inputting text may imply an entire sentence, spaces are automatically removed
 	                           
 	        if (!isInputValid(s.toLowerCase())) {
 	        	System.out.println("Make sure that your text only contains letters! Punctuations and symbols are not allowed. Spaces will be automatically removed");

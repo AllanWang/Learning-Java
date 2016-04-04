@@ -41,14 +41,14 @@ public class GetScanner {
 
     public static char getChar(Scanner scanner, String prompt) {
         char c = '$'; //value will be parsed again
-        boolean errorAlert = false;
-        while(!errorAlert) {
-            errorAlert = true;
+        boolean errorAlert = true;
+        while(errorAlert) {
+        	errorAlert = false;
             System.out.print(prompt);
             String s = scanner.next();
             if (s.length() > 1) {
                 System.out.println("Please input one character only!");
-                errorAlert = false;
+                errorAlert = true;
             } else {
                 c = s.charAt(0); //get character from String
             }
