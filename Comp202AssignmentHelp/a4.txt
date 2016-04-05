@@ -1,0 +1,9 @@
+To go through all the keys in a hashmap, use
+	for (String s : h.keySet()) { //h is the name of your hashmap
+		//code here
+	}
+	
+When using collections, you can just do the following:
+
+Collections.sort(l); //where l is the name of List<String> l = new ArrayList<>();
+
