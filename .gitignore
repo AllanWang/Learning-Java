@@ -77,3 +77,10 @@ proguard/
 .idea/
 #gradle.properties
 *.iml
+
+
+out/
+*.zip
+
+# other
+src/ds/
